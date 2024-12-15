@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>! Happy</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: monospace;
+    }
+
+    .scene {
+      width: 200px;
+      height: 200px;
+      perspective: 1000px;
+      margin-bottom: 20px;
+    }
+
+    .cube {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate 5s infinite linear;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      transform-origin: center;
+    }
+
+    .cube-face div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(100px); }
+    .back   { transform: rotateY(180deg) translateZ(100px); }
+    .right  { transform: rotateY(90deg) translateZ(100px); }
+    .left   { transform: rotateY(-90deg) translateZ(100px); }
+    .top    { transform: rotateX(90deg) translateZ(100px); }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+    @keyframes rotate {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    .music-player {
+      text-align: center;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 10px;
+      background-color: white;
+      margin: 5px auto;
+      position: relative;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #00ff00;
+      width: 0;
+    }
+
+    button {
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: monospace;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="cube">
+      <div class="cube-face front">
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+      </div>
+      <div class="cube-face back">
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+      </div>
+      <div class="cube-face right">
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+      </div>
+      <div class="cube-face left">
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+      </div>
+      <div class="cube-face top">
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+      </div>
+      <div class="cube-face bottom">
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+        <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div>
+        <div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player">
+    <h3>Now Playing: Ogryzek - AURA</h3>
+    <audio id="audio" src="Ogryzek_AURA.mp3" preload="auto"></audio>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <div class="progress-percent" id="progress-percent">0%</div>
+    <button onclick="togglePlay()">Play</button>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const progress = document.querySelector('.progress');
+    const progressPercent = document.getElementById('progress-percent');
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        event.target.textContent = 'Pause';
+      } else {
+        audio.pause();
+        event.target.textContent = 'Play';
+      }
+    }
+
+    audio.ontimeupdate = () => {
+      const progressPercentage = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = progressPercentage + '%';
+      progressPercent.textContent = `${Math.round(progressPercentage)}%`;
+    };
+  </script>
+</body>
+</html>
